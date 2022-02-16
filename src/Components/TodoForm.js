@@ -4,6 +4,7 @@ import TodoList from "./TodoList";
 const TodoForm = () => {
   const [state, setState] = useState("");
   const [value, setValue] = useState([]);
+  const [Check, setCheck] = useState(false);
 
   const add = (e) => {
     e.preventDefault();
@@ -15,9 +16,13 @@ const TodoForm = () => {
   const dele = (e) => setValue([...value].filter((i) => i.id !== e));
 
   const edit = (e) => {
-    let a = prompt("enter Some Thing");
+    setCheck(true);
+  };
 
-    setValue([...value.map((i) => (i.id === e ? { id: e, value: a } : i))]);
+  const editor = (x, y) => {
+    console.log(x, y);
+    setValue([...value.map((i) => (i.id === x ? { id: x, value: y } : i))]);
+    setCheck(false);
   };
 
   return (
@@ -34,7 +39,13 @@ const TodoForm = () => {
         />
         <button className="text-xl font-bold text-white ml-2 ">click</button>
       </form>
-      <TodoList value={value} Delete={dele} Edit={edit} />
+      <TodoList
+        value={value}
+        Delete={dele}
+        Edit={edit}
+        state={Check}
+        edition={editor}
+      />
     </div>
   );
 };
