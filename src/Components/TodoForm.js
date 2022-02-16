@@ -1,10 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TodoList from "./TodoList";
 
 const TodoForm = () => {
   const [state, setState] = useState("");
   const [value, setValue] = useState([]);
   const [Check, setCheck] = useState(false);
+
+  useEffect(() => {
+    let json = localStorage.getItem("value");
+    let item = JSON.parse(json);
+    if (item) setValue(item);
+  }, []);
+
+  useEffect(() => {
+    let json = JSON.stringify(value);
+    localStorage.setItem("value", json);
+  }, [value]);
 
   const add = (e) => {
     e.preventDefault();
@@ -14,20 +25,31 @@ const TodoForm = () => {
       return;
     }
 
-    setValue([...value, { id, value: state }]);
+    setValue([...value, { id, value: state, complete: false }]);
     setState("");
   };
 
   const dele = (e) => setValue([...value].filter((i) => i.id !== e));
 
-  const edit = (e) => {
-    setCheck(true);
-  };
+  const edit = () => setCheck(true);
 
   const editor = (x, y) => {
-    console.log(x, y);
-    setValue([...value.map((i) => (i.id === x ? { id: x, value: y } : i))]);
+    setValue([
+      ...value.map((i) =>
+        i.id === x ? { id: x, value: y, complete: false } : i
+      ),
+    ]);
     setCheck(false);
+  };
+
+  const complete = (e) => {
+    setValue([
+      ...value.map((i) =>
+        i.id === e ? { id: e, value: i.value, complete: !i.complete } : i
+      ),
+    ]);
+
+    console.log(value);
   };
 
   return (
@@ -50,6 +72,7 @@ const TodoForm = () => {
         Edit={edit}
         state={Check}
         edition={editor}
+        com={complete}
       />
     </div>
   );

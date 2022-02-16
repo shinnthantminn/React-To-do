@@ -2,7 +2,7 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
 import { useState } from "react";
 
-const TodoList = ({ value, Delete, Edit, state, edition }) => {
+const TodoList = ({ value, Delete, Edit, state, edition, com }) => {
   const [edit, setEdit] = useState(null);
   const [text, setText] = useState("");
 
@@ -36,7 +36,16 @@ const TodoList = ({ value, Delete, Edit, state, edition }) => {
                 />
               </form>
             ) : (
-              <div className="w-[70%] break-words">{i.value}</div>
+              <div
+                className={
+                  i.complete
+                    ? "line-through w-[70%] select-none"
+                    : "w-[70%] select-none"
+                }
+                onClick={(_) => com(i.id)}
+              >
+                {i.value}
+              </div>
             )}
             {state && edit === i.id ? null : (
               <div className="flex items-center sticky flex top-0">
