@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/TodoForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/TodoForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/TodoList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/TodoList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +88,8 @@
       <workItem from="1644909329521" duration="4636000" />
       <workItem from="1644918865739" duration="5355000" />
       <workItem from="1644941469711" duration="8753000" />
-      <workItem from="1644998498905" duration="4018000" />
+      <workItem from="1644998498905" duration="4446000" />
+      <workItem from="1645024744890" duration="1351000" />
     </task>
     <servers />
   </component>

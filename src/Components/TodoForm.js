@@ -9,6 +9,11 @@ const TodoForm = () => {
   const add = (e) => {
     e.preventDefault();
     let id = Math.floor(Math.random() * 10000);
+
+    if (state === "") {
+      return;
+    }
+
     setValue([...value, { id, value: state }]);
     setState("");
   };
@@ -26,9 +31,9 @@ const TodoForm = () => {
   };
 
   return (
-    <div className="w-[30%] mx-auto pt-10 bg-[#581b98] min-h-[80vh] rounded">
+    <div className="w-[100%] md:w-[70%] lg:w-[40%] 2xl:w-[30%] glass mx-auto pt-10 min-h-[80vh] rounded">
       <form
-        className="bg-violet-500 rounded-lg w-[80%] h-14 px-5 mx-auto flex justify-center items-center"
+        className="bg-violet-500 rounded-lg w-[90%] md:w-[80%] h-14 px-5 mx-auto flex justify-center items-center"
         onSubmit={add}
       >
         <input

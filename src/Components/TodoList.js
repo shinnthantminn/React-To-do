@@ -7,23 +7,26 @@ const TodoList = ({ value, Delete, Edit, state, edition }) => {
   const [text, setText] = useState("");
 
   return (
-    <div className="w-[72%] mx-auto">
+    <div className="w-[82%] md:w-[72%] mx-auto">
       {value.map((i) => {
         return (
           <div
-            className="h-[50px] pr-2 flex justify-between leading-[50px] pl-3 text-white text-xl relative bg-red-400 rounded my-3 overflow-y-scroll scrollbar-none"
+            className="h-[50px] pr-2 flex justify-between leading-[50px] pl-3 text-white text-xl relative bg-red-600 rounded my-3 overflow-y-scroll scrollbar-none"
             key={i.id}
           >
             {state && edit === i.id ? (
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
+                  if (text === "") {
+                    return;
+                  }
                   edition(i.id, text);
                   setText("");
                 }}
               >
                 <input
-                  className="bg-red-400 outline-0"
+                  className="bg-red-600 outline-0"
                   type="text"
                   value={text}
                   autoFocus
